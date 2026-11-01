@@ -1,0 +1,60 @@
+# Скопируйте этот файл в config/settings.yaml и заполните свои данные
+
+telegram:
+  bot_token: "YOUR_BOT_TOKEN"        # от @BotFather
+  admin_chat_id: "YOUR_CHAT_ID"      # ваш chat_id (узнать через @userinfobot)
+
+viber:
+  auth_token: "YOUR_VIBER_TOKEN"
+  webhook_url: "https://yourdomain.com/webhook/viber"
+
+email:
+  imap_host: "imap.gmail.com"
+  imap_port: 993
+  username: "your@email.com"
+  password: "YOUR_APP_PASSWORD"      # app-specific password, не основной пароль
+  check_interval_seconds: 60
+  folders: ["INBOX"]
+  # Фильтры: какие письма считать важными
+  important_senders: []              # например: ["google-ads@google.com"]
+  important_subjects: ["Billing", "Policy", "Suspended", "Alert"]
+
+google_ads:
+  developer_token: "YOUR_DEVELOPER_TOKEN"
+  client_id: "YOUR_CLIENT_ID"
+  client_secret: "YOUR_CLIENT_SECRET"
+  refresh_token: "YOUR_REFRESH_TOKEN"
+  customer_id: "YOUR_CUSTOMER_ID"   # без дефисов: 1234567890
+  check_interval_seconds: 300        # каждые 5 минут
+  # Какие изменения считать важными
+  watch_change_types:
+    - "AD_GROUP_BID_MODIFIER"
+    - "CAMPAIGN_BUDGET"
+    - "AD_GROUP_AD_STATUS"
+    - "CAMPAIGN_STATUS"
+  bid_change_threshold_percent: 20   # оповещать если ставка изменилась > 20%
+  budget_change_threshold_percent: 15
+
+merchant_center:
+  merchant_id: "YOUR_MERCHANT_ID"
+  credentials_file: "config/google_credentials.json"
+  check_interval_seconds: 600        # каждые 10 минут
+  watch_issues: ["disapproved", "policy_violation", "account_suspended"]
+
+agent:
+  # Выберите провайдера: "anthropic" или "deepseek"
+  provider: "anthropic"
+  model: "claude-sonnet-4-6"        # или "deepseek-chat" для DeepSeek
+  api_key: "YOUR_API_KEY"
+  # deepseek_api_key: "YOUR_DEEPSEEK_KEY"
+  auto_apply_threshold: 0.9          # если уверенность > 90%, применять без вопросов
+  require_confirmation: true         # всегда спрашивать подтверждение
+
+server:
+  host: "0.0.0.0"
+  port: 8080
+  webhook_secret: "RANDOM_SECRET_STRING"
+
+logging:
+  level: "INFO"
+  file: "logs/reactor.log"

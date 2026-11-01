@@ -1,0 +1,11 @@
+config/settings.yaml
+config/google_credentials.json
+logs/
+__pycache__/
+*.pyc
+.env
+*.egg-info/
+dist/
+build/
+.venv/
+venv/
